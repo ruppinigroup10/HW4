@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      const localIP = "127.0.0.1";
+      const BASE_PATH =
+        window.location.host.includes(localIP) ||
+        window.location.host.includes("localhost")
+          ? ""
+          : "https://proj.ruppin.ac.il/igroup10/test2/tar3";
+
+      // Load config first
+      document.write(`<script src="${BASE_PATH}/script/config.js"><\/script>`);
+    </script>
+    <!-- Load config first -->
+    <!-- <script src="https://proj.ruppin.ac.il/igroup10/test2/tar3/script/config.js"></script>-->
+    <!-- <script src="/script/config.js"></script> -->
+    <!-- <link
+      rel="stylesheet"
+      href="https://proj.ruppin.ac.il/igroup10/test2/tar3/CSS/CSS_login.css"
+    /> -->
+    <!-- <link rel="stylesheet" href="/CSS/CSS_login.css" /> -->
+    <!--Font Awesome for icons-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <title>Login and Register</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <!-- <script
+      src="https://proj.ruppin.ac.il/igroup10/test2/tar3/script/ajaxCall.js"
+      defer
+    ></script>
+    <script
+      src="https://proj.ruppin.ac.il/igroup10/test2/tar3/script/login.js"
+      defer
+    ></script> -->
+    <!-- <script src="/script/ajaxCall.js" defer></script>
+    <script src="/script/login.js" defer></script> -->
+    <script>
+      //CSS
+      document.write(
+        `<link rel="stylesheet" href="${config.getAssetUrl(
+          "CSS/CSS_login.css"
+        )}">`
+      );
+      //SCRIPTS
+
+      document.write(
+        `<script src="${config.getAssetUrl(
+          "script/ajaxCall.js"
+        )}" defer><\/script>`
+      );
+      document.write(
+        `<script src="${config.getAssetUrl(
+          "script/login.js"
+        )}" defer><\/script>`
+      );
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
+  </head>
+
+  <body>
+    <div style="display: flex; justify-content: flex-start; padding: 10px">
+      <a
+        href="https://proj.ruppin.ac.il/igroup10/test2/tar3/Pages/index.html"
+        class="home-link"
+        style="color: white"
+      >
+        <!-- <a href="/Pages/index.html" class="home-link" style="color: white"> -->
+        <i class="fas fa-gamepad"></i>Games
+      </a>
+    </div>
+
+    <h1>Welcome!</h1>
+
+    <div id="continer">
+      <div class="auth-container">
+        <!------------------>
+        <!--Tab navigation-->
+        <!------------------>
+        <div class="tab-navigation">
+          <button class="tab-button" data-form="login">
+            <i class="fas fa-sign-in-alt"></i> Login
+          </button>
+          <button class="tab-button" data-form="Register">
+            <i class="fas fa-user-plus"></i> Register
+          </button>
+        </div>
+
+        <form id="login" class="form_con">
+          <h2>Login</h2>
+          <table>
+            <tr>
+              <td><i class="fas fa-envelope"></i> Email:</td>
+              <td>
+                <input
+                  type="text"
+                  id="log_email"
+                  placeholder="Enter your email"
+                  pattern="^((?!\.)[\w\-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$"
+                  required
+                />
+              </td>
+            </tr>
+            <tr>
+              <td><i class="fas fa-lock"></i> Password:</td>
+              <td>
+                <div class="password-field">
+                  <input
+                    type="password"
+                    id="log_password"
+                    placeholder="Enter your password"
+                    pattern="^[A-Z0-9]+$"
+                    required
+                  />
+                  <i class="fas fa-eye password-toggle"></i>
+                </div>
+              </td>
+            </tr>
+          </table>
+          <input type="submit" value="Login" class="button" id="customAlert" />
+        </form>
+
+        <form id="Register" class="form_con">
+          <h2>Register</h2>
+          <table>
+            <tr>
+              <td><i class="fas fa-user"></i> Name:</td>
+              <td>
+                <input
+                  type="text"
+                  id="reg_name"
+                  placeholder="Enter your name"
+                  required
+                />
+              </td>
+            </tr>
+            <tr>
+              <td><i class="fas fa-envelope"></i> Email:</td>
+              <td>
+                <input
+                  type="text"
+                  id="reg_email"
+                  placeholder="Enter your email"
+                  pattern="^((?!\.)[\w\-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$"
+                  required
+                />
+              </td>
+            </tr>
+            <tr>
+              <td><i class="fas fa-lock"></i> Password:</td>
+              <td>
+                <div class="password-field">
+                  <input
+                    type="password"
+                    id="reg_password"
+                    placeholder="Enter your password"
+                    pattern="^[A-Z0-9]+$"
+                    required
+                  />
+                  <i class="fas fa-eye password-toggle"></i>
+                </div>
+                <div style="color: #666; font-size: 12px; margin-top: 2px">
+                  * Uppercase letters & numbers only
+                </div>
+              </td>
+            </tr>
+          </table>
+          <input
+            type="submit"
+            value="Register"
+            class="button"
+            id="registerAlert"
+          />
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,117 @@
+/* Import base styles */
+@import url("https://proj.ruppin.ac.il/igroup10/test2/tar3/CSS/CSS_login.css");
+
+/* Override specific styles for edit profile */
+.auth-container {
+  max-width: 500px;
+  padding: 24px;
+}
+
+.form_con {
+  display: block;
+  padding: 0;
+}
+
+table {
+  width: 100%;
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+table tr {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+table td {
+  padding: 0;
+}
+
+table td:first-child {
+  width: 180px;
+  color: #666;
+  font-weight: normal;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  padding-top: 8px;
+}
+
+table td:last-child {
+  flex: 1;
+}
+
+table td i.fa-user,
+table td i.fa-envelope,
+table td i.fa-lock {
+  margin-right: 8px;
+  color: #777;
+  width: 16px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  height: 30px;
+  padding: 4px 4px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  background: #fff;
+  box-sizing: border-box;
+  line-height: 40px;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+  border-color: #ff7b00;
+  box-shadow: 0 0 0 2px rgba(255, 123, 0, 0.1);
+}
+
+/* Password field container */
+.password-field {
+  position: relative;
+  width: 100%;
+  margin-bottom: 4px;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #777;
+  cursor: pointer;
+  z-index: 2;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+}
+
+.password-hint {
+  color: #666;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.button {
+  width: 100%;
+  background-color: #ff7b00;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: normal;
+  border-radius: 4px;
+  margin-top: 24px;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #ff6a00;
+}

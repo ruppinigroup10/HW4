@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      const localIP = "127.0.0.1";
+      const BASE_PATH =
+        window.location.host.includes(localIP) ||
+        window.location.host.includes("localhost")
+          ? ""
+          : "https://proj.ruppin.ac.il/igroup10/test2/tar3";
+
+      // Load config first
+      document.write(`<script src="${BASE_PATH}/script/config.js"><\/script>`);
+    </script>
+    <!-- Load config first -->
+    <!-- <script src="https://proj.ruppin.ac.il/igroup10/test2/tar3/script/config.js"></script>-->
+    <!-- <script src="/script/config.js"></script> -->
+
+    <!-- <link
+      rel="stylesheet"
+      href="https://proj.ruppin.ac.il/igroup10/test2/tar3/CSS/style.css"
+    /> -->
+    <!-- <link rel="stylesheet" href="/CSS/style.css" /> -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <title>Steam</title>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
+    <!-- <script
+      src="https://proj.ruppin.ac.il/igroup10/test2/tar3/script/ajaxCall.js"
+      defer
+    ></script>
+    <script
+      src="https://proj.ruppin.ac.il/igroup10/test2/tar3/script/main.js"
+      defer
+    ></script> -->
+    <!-- <script src="/script/ajaxCall.js" defer></script>
+    <script src="/script/main.js" defer></script> -->
+
+    <script>
+      document.write(
+        `<link rel="stylesheet" href="${config.getAssetUrl("CSS/style.css")}">`
+      );
+      document.write(
+        `<script src="${config.getAssetUrl(
+          "script/ajaxCall.js"
+        )}" defer><\/script>`
+      );
+      document.write(
+        `<script src="${config.getAssetUrl("script/main.js")}" defer><\/script>`
+      );
+    </script>
+  </head>
+  <body>
+    <div class="continer">
+      <div id="userInfo">
+        <div id="userName">
+          <!-- User name will be displayed here -->
+        </div>
+        <div id="userLinks">
+          <!-- User info will be displayed here -->
+        </div>
+      </div>
+
+      <h1>Games</h1>
+      <div id="main"></div>
+      <!--main-->
+    </div>
+  </body>
+</html>

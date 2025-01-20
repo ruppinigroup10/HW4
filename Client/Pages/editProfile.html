@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      const localIP = "127.0.0.1";
+      const BASE_PATH =
+        window.location.host.includes(localIP) ||
+        window.location.host.includes("localhost")
+          ? ""
+          : "https://proj.ruppin.ac.il/igroup10/test2/tar3";
+
+      // Load config first
+      document.write(`<script src="${BASE_PATH}/script/config.js"><\/script>`);
+    </script>
+    <!-- Load config first -->
+    <!-- <script src="https://proj.ruppin.ac.il/igroup10/test2/tar3/script/config.js"></script>-->
+    <!-- <script src="/script/config.js"></script> -->
+    <title>Edit Profile - Steam</title>
+    <!-- <link
+      rel="stylesheet"
+      href="https://proj.ruppin.ac.il/igroup10/test2/tar3/CSS/CSS_editProfile.css"
+    /> -->
+    <!-- <link rel="stylesheet" href="/CSS/CSS_editProfile.css" /> -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- <script
+      src="https://proj.ruppin.ac.il/igroup10/test2/tar3/script/ajaxCall.js"
+      defer
+    ></script>
+    <script
+      src="https://proj.ruppin.ac.il/igroup10/test2/tar3/script/editProfile.js"
+      defer
+    ></script> -->
+    <!-- <script src="/script/ajaxCall.js" defer></script>
+    <script src="/script/editProfile.js" defer></script> -->
+
+    <script>
+      //CSS
+      document.write(
+        `<link rel="stylesheet" href="${config.getAssetUrl(
+          "CSS/CSS_editProfile.css"
+        )}">`
+      );
+      //SCRIPTS
+
+      document.write(
+        `<script src="${config.getAssetUrl(
+          "script/ajaxCall.js"
+        )}" defer><\/script>`
+      );
+      document.write(
+        `<script src="${config.getAssetUrl(
+          "script/editProfile.js"
+        )}" defer><\/script>`
+      );
+    </script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div style="display: flex; justify-content: flex-start; padding: 10px">
+      <a
+        href="https://proj.ruppin.ac.il/igroup10/test2/tar3/Pages/index.html"
+        class="home-link"
+      >
+        <!-- <a href="/Pages/index.html" class="home-link"> -->
+        <i class="fas fa-home"></i>Back to Home
+      </a>
+    </div>
+
+    <h1>Edit Profile</h1>
+
+    <div id="continer">
+      <div class="auth-container">
+        <form id="editProfileForm" class="form_con">
+          <table>
+            <tr>
+              <td>
+                <i class="fas fa-user"></i>
+                Username:
+              </td>
+              <td>
+                <input
+                  type="text"
+                  id="name"
+                  placeholder="Enter username"
+                  required
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <i class="fas fa-envelope"></i>
+                Email:
+              </td>
+              <td>
+                <input
+                  type="text"
+                  id="email"
+                  placeholder="Enter email"
+                  pattern="^((?!\.)[\w\-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$"
+                  required
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <i class="fas fa-lock"></i>
+                Password:
+              </td>
+              <td>
+                <div class="password-field">
+                  <input
+                    type="password"
+                    id="password"
+                    placeholder="Enter password"
+                    pattern="^[A-Z0-9]+$"
+                    required
+                  />
+                  <i class="fas fa-eye password-toggle"></i>
+                </div>
+                <div style="color: #666; font-size: 12px; margin-top: 2px">
+                  * Uppercase letters & numbers only
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <i class="fas fa-lock"></i>
+                Confirm Password:
+              </td>
+              <td>
+                <div class="password-field">
+                  <input
+                    type="password"
+                    id="confirmPassword"
+                    placeholder="Confirm password"
+                    pattern="^[A-Z0-9]+$"
+                    required
+                  />
+                  <i class="fas fa-eye password-toggle"></i>
+                </div>
+                <div style="color: #666; font-size: 12px; margin-top: 2px">
+                  * Uppercase letters & numbers only
+                </div>
+              </td>
+            </tr>
+          </table>
+          <button type="submit" class="button">Update Profile</button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

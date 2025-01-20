@@ -1,0 +1,186 @@
+body {
+  background: linear-gradient(135deg, #1b2838 0%, #2a475e 100%);
+  min-height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.5;
+}
+
+.home-link {
+  display: inline-block;
+  color: white;
+  text-decoration: none;
+  padding: 8px 16px;
+  margin: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.home-link:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.home-link i {
+  margin-right: 8px;
+}
+
+h1 {
+  text-align: center;
+  font-family: Helvetica;
+  font-size: 50px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  color: white;
+}
+
+#continer {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.auth-container {
+  width: 100%;
+  max-width: 700px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.tab-navigation {
+  display: flex;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.tab-button {
+  flex: 1;
+  padding: 16px;
+  font-size: 16px;
+  font-weight: 500;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #6b7280;
+  transition: all 0.3s ease;
+}
+
+.tab-button i {
+  margin-right: 8px;
+}
+
+.tab-button.active {
+  color: #ff7b00;
+  border-bottom: 2px solid #ff7b00;
+}
+
+.form_con {
+  display: none;
+  padding: 24px 40px;
+  background-color: white;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+h2 {
+  font-family: Helvetica;
+  font-size: 24px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  color: #1f2937;
+}
+
+table {
+  width: 100%;
+  border-spacing: 0 12px;
+  border-collapse: separate;
+  table-layout: auto;
+}
+
+table td {
+  padding: 8px 0;
+  vertical-align: top;
+}
+
+table td:first-child {
+  /* text-align: left; */
+  width: 120px;
+  padding-right: 20px;
+  color: #4b5563;
+  font-weight: 500;
+}
+
+table td:last-child {
+  width: auto;
+}
+
+table td i {
+  margin-right: 8px;
+  color: #6b7280;
+}
+
+.password-field {
+  position: relative;
+  width: 100%;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #6b7280;
+  cursor: pointer;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 8px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+  outline: none;
+  border-color: #ff7b00;
+  box-shadow: 0 0 0 3px rgba(255, 123, 0, 0.1);
+}
+
+.button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 20px;
+  background-color: #ff7b00;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.button:hover {
+  background-color: #ff6a00;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 600px) {
+  #continer {
+    padding: 10px;
+  }
+
+  .auth-container {
+    margin: 0 10px;
+  }
+
+  table td:first-child {
+    width: 100px;
+  }
+}
