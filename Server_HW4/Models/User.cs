@@ -1,4 +1,4 @@
-﻿namespace Server.Models
+﻿namespace Server_HW4.Models
 {
     public class User
     {
@@ -6,6 +6,7 @@
         private string Name;
         private string Email;
         private string Password;
+        private bool isActive;
         private static List<User> UsersList = new List<User>();
 
 
@@ -14,6 +15,7 @@
         public string name { get => Name; set => Name = value; }
         public string email { get => Email; set => Email = value; }
         public string password { get => Password; set => Password = value; }
+        public bool IsActive { get => isActive; set => isActive = value; }
 
         public User()
         {
@@ -63,6 +65,18 @@
         {
             DBservices dbs = new DBservices();
             return dbs.UpdateUserInfo(id, name, email, password);
+        }
+
+        public int updateIsActive(int id, int isActive)
+        {
+            DBservices dbs = new DBservices();
+            return dbs.UpdateUserIsActive(id, isActive);
+        }
+
+        public Object getUsersData()
+        {
+            DBservices dbs = new DBservices();
+            return dbs.readUsersData();
         }
 
     }

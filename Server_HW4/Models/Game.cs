@@ -1,7 +1,7 @@
-﻿using Server_HW3.Models;
+﻿
 using System.Text.Json.Serialization;
 
-namespace Server.Models
+namespace Server_HW4.Models
 {
     public class Game
     {

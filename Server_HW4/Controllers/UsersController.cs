@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
-using Server.Models;
+using Server_HW4.Models;
 
-namespace Server.Controllers
+namespace Server_HW4.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -22,13 +22,29 @@ namespace Server.Controllers
             return "value";
         }
 
-        //Post api/<UsersController>/Register
-        [HttpPost("Register")]
-        public IActionResult Register([FromBody] Server.Models.User user)
+        // GET: api/<UsersController> getUserData
+        [HttpGet("getUserData")]
+        public IActionResult getUserData()
         {
             try
             {
-                var newUser = Server.Models.User.Register(user.name, user.email, user.password);
+                var usersData = new User().getUsersData();
+                return Ok(usersData);
+            }
+            catch (Exception ex)
+            {
+                // Simple error handling
+                return StatusCode(500, ex.Message);
+            }
+        }
+
+        //Post api/<UsersController>/Register
+        [HttpPost("Register")]
+        public IActionResult Register([FromBody] Server_HW4.Models.User user)
+        {
+            try
+            {
+                var newUser = Server_HW4.Models.User.Register(user.name, user.email, user.password);
 
                 if (newUser != null)
                 {
@@ -56,7 +72,7 @@ namespace Server.Controllers
         {
             try
             {
-                var loggedInUser = Server.Models.User.Login(user.email, user.password);
+                var loggedInUser = Server_HW4.Models.User.Login(user.email, user.password);
 
                 if (loggedInUser != null)
                 {
@@ -76,11 +92,11 @@ namespace Server.Controllers
 
         //Put api/<UsersController>/UpdateProfile
         [HttpPut("UpdateProfile")]
-        public IActionResult UpdateProfile([FromBody] Server.Models.User user)
+        public IActionResult UpdateProfile([FromBody] Server_HW4.Models.User user)
         {
             try
             {
-                var updatedUser = Server.Models.User.UpdateProfile(user.id, user.name, user.email, user.password);
+                var updatedUser = Server_HW4.Models.User.UpdateProfile(user.id, user.name, user.email, user.password);
 
                 if (updatedUser != null)
                 {
@@ -101,6 +117,23 @@ namespace Server.Controllers
                 return BadRequest(new { message = "Update failed" });
             }
         }
+
+        //Put api/<UsersController>/UpdateProfile
+        [HttpPut("IsActiveChange")]
+        public IActionResult IsActiveChange(int id, int isActive)
+        {
+            try
+            {
+                User user = new User();
+                user.updateIsActive(id, isActive);
+                return Ok(new { message = "Updated successfully" });
+            }
+            catch (Exception)
+            {
+                return BadRequest(new { message = "Update failed" });
+            }
+        }
+
 
         // PUT api/<UsersController>/5
         [HttpPut("{id}")]

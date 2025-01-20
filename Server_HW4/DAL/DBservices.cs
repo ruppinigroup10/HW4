@@ -5,8 +5,7 @@ using System.Web;
 using System.Data.SqlClient;
 using System.Data;
 using System.Text;
-using Server.Models;
-using Server_HW3.Models;
+using Server_HW4.Models;
 
 /// <summary>
 /// DBServices is a class created by me to provides some DataBase Services
@@ -237,8 +236,8 @@ public class DBservices
                     user = new User
                     {
                         id = Convert.ToInt32(dr["ID"]),
-                        name = dr["Name"].ToString(),
-                        email = dr["Email"].ToString()
+                        name = dr["Name"].ToString() ?? "",
+                        email = dr["Email"].ToString() ?? ""
                     };
                 }
             }
@@ -294,8 +293,8 @@ public class DBservices
                     user = new User
                     {
                         id = Convert.ToInt32(dr["ID"]),
-                        name = dr["Name"].ToString(),
-                        email = dr["Email"].ToString()
+                        name = dr["Name"].ToString() ?? "",
+                        email = dr["Email"].ToString() ?? ""
                     };
                 }
             }
@@ -460,6 +459,107 @@ public class DBservices
         {
             if (con != null && con.State == System.Data.ConnectionState.Open)
             {
+                con.Close();
+            }
+        }
+    }
+
+    //--------------------------------------------------------------------------------------------------
+    // Method to update user isActive
+    //--------------------------------------------------------------------------------------------------
+    public int UpdateUserIsActive(int id, int isActive)
+    {
+        SqlConnection con;
+        SqlCommand cmd;
+
+        try
+        {
+            con = connect("myProjDB");
+        }
+        catch (Exception ex)
+        {
+            throw new Exception("Database connection error: " + ex.Message);
+        }
+
+        Dictionary<string, object> paramDic = new Dictionary<string, object>();
+        paramDic.Add("@ID", id);
+        paramDic.Add("@isActive", isActive);
+
+        cmd = CreateCommandWithStoredProcedureGeneral("SP_UpdateActive", con, paramDic);
+
+        try
+        {
+            int numEffected = cmd.ExecuteNonQuery(); // execute the command
+            return numEffected;
+        }
+        catch (Exception)
+        {
+            // write to log
+            throw;
+        }
+
+        finally
+        {
+            if (con != null)
+            {
+                // close the db connection
+                con.Close();
+            }
+        }
+    }
+
+    //--------------------------------------------------------------------------------------------------
+    // This method geting all users purchases
+    //--------------------------------------------------------------------------------------------------
+    public Object readUsersData()
+    {
+
+        SqlConnection con;
+        SqlCommand cmd;
+
+        try
+        {
+            con = connect("myProjDB"); // create the connection
+        }
+        catch (Exception)
+        {
+            // write to log
+            throw;
+        }
+
+        List<Object> listObjs = new List<Object>();
+
+        cmd = CreateCommandWithStoredProcedureGeneral("SP_GetUsersData", con, null);
+
+        try
+        {
+
+            SqlDataReader dataReader = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+
+            while (dataReader.Read())
+            {
+
+                listObjs.Add(new
+                {
+                    ID = Convert.ToInt32(dataReader["ID"]),
+                    Name = dataReader["Name"].ToString() ?? "",
+                    numOfGamesBought = Convert.ToInt32(dataReader["numOfGamesBought"]),
+                    amountSpent = Convert.ToDouble(dataReader["amountSpent"]),
+                    isActive = Convert.ToBoolean(dataReader["isActive"])
+                });
+            }
+            return listObjs;
+        }
+        catch (Exception)
+        {
+            // write to log
+            throw;
+        }
+        finally
+        {
+            if (con != null)
+            {
+                // close the db connection
                 con.Close();
             }
         }

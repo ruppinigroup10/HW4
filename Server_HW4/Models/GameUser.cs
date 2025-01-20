@@ -1,6 +1,6 @@
-﻿using Server.Models;
+﻿using Server_HW4.Models;
 
-namespace Server_HW3.Models
+namespace Server_HW4.Models
 {
     public class GameUser
     {
