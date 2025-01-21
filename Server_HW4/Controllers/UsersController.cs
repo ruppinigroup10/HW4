@@ -33,7 +33,7 @@ namespace Server_HW4.Controllers
             }
             catch (Exception ex)
             {
-                // Simple error handling
+                //error handling
                 return StatusCode(500, ex.Message);
             }
         }
