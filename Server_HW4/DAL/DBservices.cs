@@ -290,11 +290,19 @@ public class DBservices
             {
                 if (dr.Read())
                 {
+                    //check if active
+                    bool isActive = Convert.ToBoolean(dr["isActive"]);
+                    if (!isActive)
+                    {
+                        throw new Exception("Account is not active");
+                    }
+
                     user = new User
                     {
                         id = Convert.ToInt32(dr["ID"]),
                         name = dr["Name"].ToString() ?? "",
-                        email = dr["Email"].ToString() ?? ""
+                        email = dr["Email"].ToString() ?? "",
+                        IsActive = isActive
                     };
                 }
             }

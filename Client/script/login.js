@@ -51,6 +51,17 @@ $("#login").submit(function () {
 function lscb(result) {
   console.log("Login success:", result);
 
+  // Check isActive status
+  if (!result.user.isActive) {
+    Swal.fire({
+      title: "Error!",
+      text: "Account is deactivated",
+      icon: "error",
+      confirmButtonText: "OK",
+    });
+    return;
+  }
+
   // Store sensitive info separately
   localStorage.setItem(
     "userCredentials",
@@ -67,6 +78,7 @@ function lscb(result) {
       id: result.user.id,
       name: result.user.name,
       email: result.user.email,
+      isActive: result.user.isActive,
       isLoggedIn: true,
     })
   );

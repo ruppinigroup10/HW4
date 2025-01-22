@@ -79,13 +79,23 @@ namespace Server_HW4.Controllers
                     return Ok(new
                     {
                         message = "Login successful",
-                        user = loggedInUser
+                        user = new
+                        {
+                            id = loggedInUser.id,
+                            name = loggedInUser.name,
+                            email = loggedInUser.email,
+                            isActive = loggedInUser.IsActive
+                        }
                     });
                 }
                 return BadRequest(new { message = "Invalid email or password" });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                if (ex.Message.Contains("Account is not active"))
+                {
+                    return BadRequest(new { message = "Account is not active" });
+                }
                 return BadRequest(new { message = "Login failed" });
             }
         }

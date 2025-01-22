@@ -82,7 +82,7 @@ namespace Server_HW4.Controllers
             }
         }
 
-        // GET: api/<UsersController> getUserData
+        // GET: api/<UsersController> GetGamesData
         [HttpGet("GetGamesData")]
         public IActionResult GetGamesData()
         {

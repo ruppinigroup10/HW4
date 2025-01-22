@@ -88,6 +88,15 @@ mainD.addEventListener("click", (e) => {
       return;
     }
 
+    // Check active status
+    if (!UserToPost.isActive) {
+      Swal.fire({
+        title: "Error!",
+        text: "Your account is deactivated",
+        icon: "error",
+      });
+      return;
+    }
     console.log("Sending data:", { game: GameToPost, user: UserToPost });
 
     //const api = "https://proj.ruppin.ac.il/igroup10/test2/tar1/api/Games";

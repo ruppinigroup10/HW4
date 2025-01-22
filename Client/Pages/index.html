@@ -45,6 +45,10 @@
     <!-- <script src="/script/ajaxCall.js" defer></script>
     <script src="/script/main.js" defer></script> -->
 
+    <script type="module">
+      import utils from "../script/utilities.js";
+      window.utils = utils; // Make utils globally available
+    </script>
     <script>
       document.write(
         `<link rel="stylesheet" href="${config.getAssetUrl("CSS/style.css")}">`

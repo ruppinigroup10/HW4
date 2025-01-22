@@ -1,6 +1,6 @@
 const config = {
   // Base settings
-  PORT: "7067", // make sure to change this to your server port
+  PORT: "7131", // make sure to change this to your server port
   apiVersion: "tar1", // For API endpoints
   clientVersion: "tar3", // For static assets/client files
   localIP: "127.0.0.1", // Localhost IP
