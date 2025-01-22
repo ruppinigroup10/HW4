@@ -565,6 +565,62 @@ public class DBservices
         }
     }
 
+    //--------------------------------------------------------------------------------------------------
+    // This method geting all games purchases
+    //--------------------------------------------------------------------------------------------------
+    public Object readGamesData()
+    {
+
+        SqlConnection con;
+        SqlCommand cmd;
+
+        try
+        {
+            con = connect("myProjDB"); // create the connection
+        }
+        catch (Exception)
+        {
+            // write to log
+            throw;
+        }
+
+        List<Object> listObjs = new List<Object>();
+
+        cmd = CreateCommandWithStoredProcedureGeneral("SP_GetGamesData", con, null);
+
+        try
+        {
+
+            SqlDataReader dataReader = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+
+            while (dataReader.Read())
+            {
+
+                listObjs.Add(new
+                {
+                    AppID = Convert.ToInt32(dataReader["AppID"]),
+                    Name = dataReader["Name"].ToString() ?? "",
+                    numberOfPurchases = Convert.ToInt32(dataReader["numberOfPurchases"]),
+                    totalAmountPaid = Convert.ToDouble(dataReader["totalAmountPaid"])
+                });
+            }
+            return listObjs;
+        }
+        catch (Exception)
+        {
+            // write to log
+            throw;
+        }
+        finally
+        {
+            if (con != null)
+            {
+                // close the db connection
+                con.Close();
+            }
+        }
+    }
+
     //---------------------------------------------------------------------------------
     // Create the SqlCommand
     //---------------------------------------------------------------------------------

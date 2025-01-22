@@ -82,7 +82,21 @@ namespace Server_HW4.Controllers
             }
         }
 
-
+        // GET: api/<UsersController> getUserData
+        [HttpGet("GetGamesData")]
+        public IActionResult GetGamesData()
+        {
+            try
+            {
+                var gamesData = new Game().getGamesData();
+                return Ok(gamesData);
+            }
+            catch (Exception ex)
+            {
+                //error handling
+                return StatusCode(500, ex.Message);
+            }
+        }
 
         // POST api/<GameController> Add a game
         [HttpPost]

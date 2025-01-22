@@ -137,5 +137,11 @@ namespace Server_HW4.Models
             }
         }
 
+        public Object getGamesData()
+        {
+            DBservices dbs = new DBservices();
+            return dbs.readGamesData();
+        }
+
     }
 }
