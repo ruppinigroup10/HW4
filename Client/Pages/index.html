@@ -5,14 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script>
       const localIP = "127.0.0.1";
+      const varsion = "tar4"; // need to update
       const BASE_PATH =
         window.location.host.includes(localIP) ||
         window.location.host.includes("localhost")
           ? ""
-          : "https://proj.ruppin.ac.il/igroup10/test2/tar3";
+          : `https://proj.ruppin.ac.il/igroup10/test2/${varsion}`;
 
       // Load config first
       document.write(`<script src="${BASE_PATH}/script/config.js"><\/script>`);
+      document.write(
+        `<script src="${BASE_PATH}/script/utilities.js" type="module"><\/script>`
+      );
+    </script>
+
+    <script type="module">
+      import utils from "../script/utilities.js";
+      window.utils = utils; // Make utils globally available
     </script>
     <!-- Load config first -->
     <!-- <script src="https://proj.ruppin.ac.il/igroup10/test2/tar3/script/config.js"></script>-->
@@ -45,14 +54,13 @@
     <!-- <script src="/script/ajaxCall.js" defer></script>
     <script src="/script/main.js" defer></script> -->
 
-    <script type="module">
-      import utils from "../script/utilities.js";
-      window.utils = utils; // Make utils globally available
-    </script>
     <script>
+      //CSS
       document.write(
         `<link rel="stylesheet" href="${config.getAssetUrl("CSS/style.css")}">`
       );
+      //SCRIPTS
+
       document.write(
         `<script src="${config.getAssetUrl(
           "script/ajaxCall.js"
@@ -65,6 +73,9 @@
   </head>
   <body>
     <div class="continer">
+      <button onclick="testUtils()" class="home-link">
+        <i class="fas fa-vial"></i>Test Utils
+      </button>
       <div id="userInfo">
         <div id="userName">
           <!-- User name will be displayed here -->

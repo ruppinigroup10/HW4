@@ -21,9 +21,9 @@ const utils = {
     return true;
   },
 
-  redirectToLogin() {
-    window.location.replace(config.getAssetUrl("Pages/login.html"));
-  },
+  ///////////////////////////////////////////////////////////
+  // Logout function- combined logout for main and mygames //
+  ///////////////////////////////////////////////////////////
 
   logout() {
     localStorage.removeItem("user");
@@ -34,7 +34,19 @@ const utils = {
       icon: "success",
       timer: 1500,
       showConfirmButton: false,
-    }).then(() => utils.redirectToLogin());
+    }).then(() => {
+      window.location.replace(config.getAssetUrl("Pages/login.html"));
+    });
+
+    //backups
+    //window.location.replace("https://proj.ruppin.ac.il/igroup10/test2/tar3/Pages/login.html")});
+    //window.location.replace("/Pages/login.html")});
+  },
+
+  // Test function
+  testUtilities() {
+    console.log("Utilities module loaded successfully");
+    return true;
   },
 };
 

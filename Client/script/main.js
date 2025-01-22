@@ -88,15 +88,9 @@ mainD.addEventListener("click", (e) => {
       return;
     }
 
-    // Check active status
-    if (!UserToPost.isActive) {
-      Swal.fire({
-        title: "Error!",
-        text: "Your account is deactivated",
-        icon: "error",
-      });
-      return;
-    }
+    // Check if user is logged in and active
+    if (!utils.checkUserAccess()) return;
+
     console.log("Sending data:", { game: GameToPost, user: UserToPost });
 
     //const api = "https://proj.ruppin.ac.il/igroup10/test2/tar1/api/Games";
@@ -183,22 +177,36 @@ if (user && user.isLoggedIn) {
         `);
 }
 
-/////////////////////
-// Logout function //
-/////////////////////
 function logout() {
-  localStorage.removeItem("user");
-  localStorage.removeItem("userCredentials"); // Remove sensitive info too
-  Swal.fire({
-    title: "Logged Out!",
-    text: "You have been successfully logged out",
-    icon: "success",
-    timer: 1500,
-    showConfirmButton: false,
-  }).then(() => {
-    window.location.replace(config.getAssetUrl("Pages/login.html"));
-  });
-  //backups
-  //window.location.replace("https://proj.ruppin.ac.il/igroup10/test2/tar3/Pages/login.html")});
-  //window.location.replace("/Pages/login.html")});
+  // Call the utility function
+  window.utils.logout();
 }
+
+// Test function to verify utilities integration
+function testUtils() {
+  try {
+    // Check if utils is properly imported and accessible
+    if (window.utils && window.utils.testUtilities()) {
+      Swal.fire({
+        title: "Success!",
+        text: "Utilities module is working properly",
+        icon: "success",
+      });
+    }
+  } catch (error) {
+    // Log error for debugging
+    console.error("Utilities test failed:", error);
+    Swal.fire({
+      title: "Error!",
+      text: "Utilities module test failed: " + error.message,
+      icon: "error",
+    });
+  }
+}
+
+// Error handler for module loading
+window.addEventListener("error", function (e) {
+  if (e.message.includes("utils")) {
+    console.error("Utils module loading error:", e);
+  }
+});
