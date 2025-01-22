@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script>
+      // need to update it to be global
       const localIP = "127.0.0.1";
       const varsion = "tar4"; // need to update
       const BASE_PATH =
@@ -14,11 +15,9 @@
 
       // Load config first
       document.write(`<script src="${BASE_PATH}/script/config.js"><\/script>`);
-      document.write(
-        `<script src="${BASE_PATH}/script/utilities.js" type="module"><\/script>`
-      );
     </script>
     <script type="module">
+      // Load utilities after all scripts
       import utils from "../script/utilities.js";
       window.utils = utils; // Make utils globally available
     </script>
@@ -69,6 +68,7 @@
         )}" defer><\/script>`
       );
     </script>
+
     <style>
       .controls {
         text-align: center;

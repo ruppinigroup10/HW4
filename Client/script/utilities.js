@@ -12,7 +12,7 @@ const utils = {
 
     if (!user.isActive) {
       Swal.fire({
-        title: "Account Deactivated",
+        title: "Account is not active",
         text: "Please contact support",
         icon: "error",
       });
