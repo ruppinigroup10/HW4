@@ -17,10 +17,6 @@ namespace Server_HW4.Models
             this.game = game;
             this.user = user;
         }
-        
-        public void hey()
-        {
-            var hey = 0;
-        }
+
     }
 }
