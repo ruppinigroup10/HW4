@@ -42,12 +42,6 @@ const utils = {
     //window.location.replace("https://proj.ruppin.ac.il/igroup10/test2/tar3/Pages/login.html")});
     //window.location.replace("/Pages/login.html")});
   },
-
-  // Test function
-  testUtilities() {
-    console.log("Utilities module loaded successfully");
-    return true;
-  },
 };
 
 export default utils;

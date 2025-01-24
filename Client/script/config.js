@@ -2,7 +2,7 @@ const config = {
   // Base settings
   PORT: "7131", // make sure to change this to your server port
   apiVersion: "tar1", // For API endpoints
-  clientVersion: "tar3", // For static assets/client files
+  clientVersion: "tar4", // For static assets/client files
   localIP: "127.0.0.1", // Localhost IP
 
   // Base API URL
@@ -45,4 +45,3 @@ const config = {
 
 // Make it globally available
 window.config = config;
-window.Port_BU = "7067"; // Backup port

@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- // config need to be loaded first // -->
     <script>
-      // need to update it to be global
       const localIP = "127.0.0.1";
       const varsion = "tar4"; // need to update
       const BASE_PATH =
@@ -13,7 +13,6 @@
           ? ""
           : `https://proj.ruppin.ac.il/igroup10/test2/${varsion}`;
 
-      // Load config first
       document.write(`<script src="${BASE_PATH}/script/config.js"><\/script>`);
     </script>
     <!-- Load config first -->

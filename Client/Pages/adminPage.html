@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Scripts -->
+    <!-- // config need to be loaded first // -->
+    <script>
+      const localIP = "127.0.0.1";
+      const varsion = "tar4"; // need to update
+      const BASE_PATH =
+        window.location.host.includes(localIP) ||
+        window.location.host.includes("localhost")
+          ? ""
+          : `https://proj.ruppin.ac.il/igroup10/test2/${varsion}`;
+
+      document.write(`<script src="${BASE_PATH}/script/config.js"><\/script>`);
+    </script>
+
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"
+    ></script>
+    <script src="https://cdn.datatables.net/buttons/2.2.2/js/dataTables.buttons.min.js"></script>
+    <script>
+      //CSS
+      document.write(
+        `<link rel="stylesheet" href="${config.getAssetUrl("CSS/style.css")}">`
+      );
+      //SCRIPTS
+
+      document.write(
+        `<script src="${config.getAssetUrl(
+          "script/ajaxCall.js"
+        )}" defer><\/script>`
+      );
+      document.write(
+        `<script src="${config.getAssetUrl(
+          "script/admin.js"
+        )}" defer><\/script>`
+      );
+    </script>
+    <title>Admin Dashboard</title>
+    <!-- DataTables CSS -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.datatables.net/buttons/2.2.1/css/buttons.dataTables.min.css"
+    />
+
+    <style>
+      .table-container {
+        padding: 20px;
+        background: white;
+        margin: 10px auto;
+        border-radius: 8px;
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      table.dataTable {
+        display: inline-block;
+        width: 100%;
+        margin: 0;
+      }
+      th,
+      td {
+        padding: 10px;
+        text-align: left;
+      }
+      .tab-button {
+        padding: 10px 20px;
+        margin: 10px;
+        cursor: pointer;
+        background: #1b2838;
+        color: white;
+        border: none;
+        border-radius: 4px;
+      }
+      .tab-button.active {
+        background: #66c0f4;
+      }
+      .tab-content {
+        display: none;
+      }
+      .tab-content.active {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="continer">
+      <div id="userInfo"></div>
+
+      <div class="tab-buttons">
+        <button class="tab-button active" data-tab="users">Users Data</button>
+        <button class="tab-button" data-tab="games">Games Data</button>
+      </div>
+
+      <div class="tab-content active" id="users">
+        <div class="table-container">
+          <table id="usersTable" class="display">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Games Bought</th>
+                <th>Amount Spent</th>
+                <!-- <th>Status</th> -->
+                <th>Actions</th>
+              </tr>
+            </thead>
+          </table>
+        </div>
+      </div>
+
+      <div class="tab-content" id="games">
+        <div class="table-container">
+          <table id="gamesTable" class="display">
+            <thead>
+              <tr>
+                <th>AppID</th>
+                <th>Name</th>
+                <th>Purchases</th>
+                <th>Total Revenue</th>
+              </tr>
+            </thead>
+          </table>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

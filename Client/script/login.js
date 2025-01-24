@@ -71,6 +71,8 @@ function lscb(result) {
     })
   );
 
+  const isAdmin = result.user.email === "admin@admin.com";
+
   // Store display info without password
   localStorage.setItem(
     "user",
@@ -79,6 +81,7 @@ function lscb(result) {
       name: result.user.name,
       email: result.user.email,
       isActive: result.user.isActive,
+      isAdmin: isAdmin,
       isLoggedIn: true,
     })
   );

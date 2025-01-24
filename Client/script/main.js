@@ -140,23 +140,33 @@ $(document).ready(() => {
 //<a href="/Pages/editProfile.html" class="home-link"></a>
 const user = JSON.parse(localStorage.getItem("user"));
 if (user && user.isLoggedIn) {
-  $("#userLinks").html(`
-    
-          
-          <a href="${config.getAssetUrl(
-            "Pages/MyGames.html"
-          )}" class="home-link">
-            <i class="fas fa-gamepad"></i>My Games
-          </a>
-          <a href="${config.getAssetUrl(
-            "Pages/editProfile.html"
-          )}" class="home-link">
-            <i class="fas fa-user-edit"></i>Edit Profile
-          </a>
-          <a href="#" onclick="logout()" class="home-link">
-            <i class="fas fa-sign-out-alt"></i>Logout
-          </a>
-        `);
+  // Base links string
+  let links = `<a href="${config.getAssetUrl(
+    "Pages/MyGames.html"
+  )}" class="home-link">
+                <i class="fas fa-gamepad"></i>My Games
+              </a>
+              <a href="${config.getAssetUrl(
+                "Pages/editProfile.html"
+              )}" class="home-link">
+                <i class="fas fa-user-edit"></i>Edit Profile
+              </a>`;
+
+  // Check for admin and add admin link
+  if (user.email === "admin@admin.com") {
+    links += `<a href="${config.getAssetUrl(
+      "Pages/adminPage.html"
+    )}" class="home-link">
+                <i class="fas fa-user-shield"></i>Admin Panel
+              </a>`;
+  }
+
+  // logout link
+  links += `<a href="#" onclick="logout()" class="home-link">
+              <i class="fas fa-sign-out-alt"></i>Logout
+            </a>`;
+
+  $("#userLinks").html(links);
   $("#userName").html(`
     
           <div style="display: flex; justify-content: center; padding: 10px;">
@@ -181,32 +191,3 @@ function logout() {
   // Call the utility function
   window.utils.logout();
 }
-
-// Test function to verify utilities integration
-function testUtils() {
-  try {
-    // Check if utils is properly imported and accessible
-    if (window.utils && window.utils.testUtilities()) {
-      Swal.fire({
-        title: "Success!",
-        text: "Utilities module is working properly",
-        icon: "success",
-      });
-    }
-  } catch (error) {
-    // Log error for debugging
-    console.error("Utilities test failed:", error);
-    Swal.fire({
-      title: "Error!",
-      text: "Utilities module test failed: " + error.message,
-      icon: "error",
-    });
-  }
-}
-
-// Error handler for module loading
-window.addEventListener("error", function (e) {
-  if (e.message.includes("utils")) {
-    console.error("Utils module loading error:", e);
-  }
-});
