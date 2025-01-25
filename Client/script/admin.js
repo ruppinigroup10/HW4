@@ -49,9 +49,9 @@ function initializeTables() {
         data: null,
         render: function (data) {
           const status = data.isActive ? "Deactivate" : "Activate";
-          return `<button onclick="toggleUserStatus(${
-            data.ID
-          }, ${!data.isActive})">${status}</button>`;
+          return `<button onclick="toggleUserStatus(${data.id}, ${
+            data.isActive ? 0 : 1
+          })">${status}</button>`;
         },
       },
     ],
@@ -91,19 +91,27 @@ function initializeTables() {
 }
 
 function toggleUserStatus(userId, newStatus) {
+  //   const data = {
+  //     id: userId,
+  //     isActive: newStatus,
+  //   };
+
+  console.log(`Debug - userId: ${userId}, newStatus: ${newStatus}`);
+
   const api = config.getApiUrl(
-    `Users/IsActiveChange?id={userId}&isActive={newStatus}`
+    `Users/IsActiveChange?id=${userId}&isActive=${newStatus}`
   );
 
-  //console.log("data:", JSON.stringify({ id: userId, isActive: newStatus }));
+  console.log("API URL:", api);
 
   $.ajax({
     url: api,
     type: "PUT",
-    data: JSON.stringify({ id: userId, isActive: newStatus }),
+    //data: JSON.stringify(data),
 
     contentType: "application/json",
-    success: function () {
+    success: function (response) {
+      console.log("API URL:", api);
       $("#usersTable").DataTable().ajax.reload();
       Swal.fire({
         title: "Success!",
@@ -111,7 +119,8 @@ function toggleUserStatus(userId, newStatus) {
         icon: "success",
       });
     },
-    error: function () {
+    error: function (xhr) {
+      console.error("Error details:", xhr.responseText);
       Swal.fire({
         title: "Error!",
         text: "Failed to update user status",
