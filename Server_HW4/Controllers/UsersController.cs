@@ -132,17 +132,17 @@ namespace Server_HW4.Controllers
         [HttpPut("IsActiveChange")]
         public IActionResult IsActiveChange(int id, int isActive)
         {
-            Console.WriteLine($"Controller received - id: {id}, isActive: {isActive}");
+            //Console.WriteLine($"Controller received - id: {id}, isActive: {isActive}");
             try
             {
                 User user = new User();
                 int result = user.updateIsActive(id, isActive);
-                Console.WriteLine($"Update result: {result}");
+                //Console.WriteLine($"Update result: {result}");
                 return Ok(new { message = "Updated successfully" });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine($"Controller error: {ex.Message}");
+                //Console.WriteLine($"Controller error: {ex.Message}");
                 return BadRequest(new { message = "Update failed" });
             }
         }

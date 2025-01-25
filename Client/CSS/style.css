@@ -87,6 +87,14 @@ video {
   vertical-align: baseline;
 }
 
+body {
+  background: linear-gradient(135deg, #1b2838 0%, #2a475e 100%);
+  min-height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.5;
+}
+
 article,
 aside,
 details,

@@ -1,0 +1,70 @@
+body {
+  background: linear-gradient(135deg, #1b2838 0%, #2a475e 100%);
+  min-height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.5;
+}
+
+.table-container {
+  padding: 20px;
+  background: white;
+  margin: 10px auto;
+  border-radius: 8px;
+  width: 90%;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table.dataTable {
+  width: 100% !important;
+  margin: 0 !important;
+  border-collapse: collapse;
+}
+th {
+  background: #1b2838;
+  color: white;
+}
+th,
+td {
+  padding: 10px;
+  text-align: left;
+}
+.tab-button {
+  padding: 10px 20px;
+  margin: 10px;
+  cursor: pointer;
+  background: #1b2838;
+  color: white;
+  border: none;
+  border-radius: 4px;
+}
+.tab-buttons {
+  padding: 20px;
+}
+.tab-button.active {
+  background: #ff7b00;
+}
+.tab-content {
+  display: none;
+}
+.tab-content.active {
+  display: block;
+}
+.home-link {
+  display: inline-block;
+  padding: 10px;
+  color: white;
+  text-decoration: none;
+  margin: 5px;
+}
+
+.home-link:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.dataTables_wrapper .dataTables_filter {
+  padding: 10px;
+}

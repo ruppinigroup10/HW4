@@ -9,6 +9,8 @@ $(document).ready(() => {
     // window.location.replace("/Pages/login.html");
     return;
   }
+  //homelink
+  $(".home-link").attr("href", config.getAssetUrl("Pages/index.html"));
 
   // Populate form with current user data
   $("#name").val(user.name);

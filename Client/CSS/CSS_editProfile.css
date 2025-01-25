@@ -1,6 +1,14 @@
 /* Import base styles */
 @import url("https://proj.ruppin.ac.il/igroup10/test2/tar3/CSS/CSS_login.css");
 
+body {
+  background: linear-gradient(135deg, #1b2838 0%, #2a475e 100%);
+  min-height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.5;
+}
+
 /* Override specific styles for edit profile */
 .auth-container {
   max-width: 500px;

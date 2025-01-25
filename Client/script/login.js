@@ -1,3 +1,8 @@
+$(document).ready(() => {
+  // Set dynamic home link
+  $(".home-link").attr("href", config.getAssetUrl("Pages/index.html"));
+});
+
 //////////////////////////////////
 // Password toggle functionality//
 //////////////////////////////////

@@ -37,14 +37,6 @@ function initializeTables() {
           return `$${data.toFixed(2)}`;
         },
       },
-      //   {
-      //     data: "isActive",
-      //     render: function (data) {
-      //       return data
-      //         ? '<span class="active">Active</span>'
-      //         : '<span class="inactive">Inactive</span>';
-      //     },
-      //   },
       {
         data: null,
         render: function (data) {
@@ -128,4 +120,26 @@ function toggleUserStatus(userId, newStatus) {
       });
     },
   });
+}
+
+$(document).ready(function () {
+  const user = JSON.parse(localStorage.getItem("user"));
+
+  $("#userInfo").html(`
+    <div style="display: flex; justify-content: center; padding: 10px">
+      <span class="home-link" style="background: rgba(255, 255, 255, 0.1)">
+        Welcome, ${user?.name || "Admin"}
+      </span>
+    </div>
+    <a href=${config.getAssetUrl("Pages/index.html")} class="home-link">
+      <i class="fas fa-gamepad"></i>Home
+    </a>
+    <a href="#" onclick="logout()" class="home-link">
+      <i class="fas fa-sign-out-alt"></i>Logout
+    </a>
+  `);
+});
+
+function logout() {
+  window.utils.logout();
 }

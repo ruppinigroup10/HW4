@@ -33,8 +33,10 @@
       document.write(
         `<link rel="stylesheet" href="${config.getAssetUrl("CSS/style.css")}">`
       );
+      document.write(
+        `<link rel="stylesheet" href="${config.getAssetUrl("CSS/admin.css")}">`
+      );
       //SCRIPTS
-
       document.write(
         `<script src="${config.getAssetUrl(
           "script/ajaxCall.js"
@@ -57,54 +59,14 @@
       rel="stylesheet"
       href="https://cdn.datatables.net/buttons/2.2.1/css/buttons.dataTables.min.css"
     />
-
-    <style>
-      .table-container {
-        padding: 20px;
-        background: white;
-        margin: 10px auto;
-        border-radius: 8px;
-        width: 90%;
-      }
-      table {
-        width: 100%;
-        border-collapse: collapse;
-      }
-
-      table.dataTable {
-        width: 100% !important;
-        margin: 0 !important;
-        border-collapse: collapse;
-      }
-      th,
-      td {
-        padding: 10px;
-        text-align: left;
-      }
-      .tab-button {
-        padding: 10px 20px;
-        margin: 10px;
-        cursor: pointer;
-        background: #1b2838;
-        color: white;
-        border: none;
-        border-radius: 4px;
-      }
-      .tab-button.active {
-        background: #66c0f4;
-      }
-      .tab-content {
-        display: none;
-      }
-      .tab-content.active {
-        display: block;
-      }
-    </style>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
   </head>
   <body>
     <div class="continer">
       <div id="userInfo"></div>
-
       <div class="tab-buttons">
         <button class="tab-button active" data-tab="users">Users Data</button>
         <button class="tab-button" data-tab="games">Games Data</button>
