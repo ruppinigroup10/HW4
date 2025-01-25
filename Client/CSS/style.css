@@ -141,7 +141,7 @@ table {
 .card {
   width: 250px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-  border-radius: 175px; /* פינות עגולות יותר */
+  border-radius: 100px; /* פינות עגולות יותר */
   overflow: hidden;
   padding-bottom: 10px;
   text-align: center;

@@ -41,9 +41,10 @@ function initializeTables() {
         data: null,
         render: function (data) {
           const status = data.isActive ? "Deactivate" : "Activate";
-          return `<button onclick="toggleUserStatus(${data.id}, ${
-            data.isActive ? 0 : 1
-          })">${status}</button>`;
+          const btnClass = data.isActive ? "deactivate-btn" : "activate-btn";
+          return `<button class="${btnClass}" onclick="toggleUserStatus(${
+            data.id
+          }, ${data.isActive ? 0 : 1})">${status}</button>`;
         },
       },
     ],

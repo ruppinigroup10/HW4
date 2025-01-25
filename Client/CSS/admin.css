@@ -32,11 +32,21 @@ td {
   padding: 10px;
   text-align: left;
 }
+
 .tab-button {
   padding: 10px 20px;
   margin: 10px;
   cursor: pointer;
   background: #1b2838;
+  color: white;
+  border: none;
+  border-radius: 4px;
+}
+button {
+  background: #ff7b00;
+  padding: 5px 5px;
+  margin: 3px;
+  cursor: pointer;
   color: white;
   border: none;
   border-radius: 4px;
@@ -67,4 +77,21 @@ td {
 
 .dataTables_wrapper .dataTables_filter {
   padding: 10px;
+}
+
+.activate-btn {
+  background: #4caf50 !important; /* Green */
+}
+
+.deactivate-btn {
+  background: #f44336 !important; /* Red */
+}
+
+/* Hover effects */
+.activate-btn:hover {
+  background: #45a049 !important;
+}
+
+.deactivate-btn:hover {
+  background: #da190b !important;
 }
