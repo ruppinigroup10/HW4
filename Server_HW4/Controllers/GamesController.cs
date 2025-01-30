@@ -118,6 +118,32 @@ namespace Server_HW4.Controllers
         }
 
 
+        private readonly IConfiguration _configuration;
+        public GamesController(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
+        // POST api/<GamesController>/classify-genre
+        [HttpPost("classify-genre")]
+        public async Task<IActionResult> ClassifyGameGenre([FromBody] Game game)
+        {
+            try
+            {
+                var apiKey = _configuration["HuggingFace:ApiKey"];
+
+                if (string.IsNullOrEmpty(apiKey))
+                {
+                    return BadRequest(new { message = "API key not configured" });
+                }
+
+                await game.ClassifyAndSetGenre(apiKey);
+                return Ok(new { genre = game.Genre });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = $"Error classifying genre: {ex.Message}" });
+            }
+        }
         // PUT api/<GamesController>/5
         // [HttpPut("{id}")]
         // public void Put(int id, [FromBody] string value)
@@ -147,5 +173,9 @@ namespace Server_HW4.Controllers
                 return BadRequest(new { message = ex.Message });
             }
         }
+
+
+
+
     }
 }

@@ -18,7 +18,7 @@ namespace Server_HW4.Models
         private int scoreRank;
         private string recommendations;
         private string publisher;
-
+        private string genre;
         private static List<Game> gameList = new List<Game>();
 
         [JsonPropertyName("AppID")]
@@ -47,6 +47,9 @@ namespace Server_HW4.Models
         public string Recommendations { get => recommendations; set => recommendations = value; }
         [JsonPropertyName("Publisher")]
         public string Publisher { get => publisher; set => publisher = value; }
+        [JsonPropertyName("Genre")]
+        public string Genre { get => genre; set => genre = value; }
+
 
         public Game()
         {
@@ -64,9 +67,10 @@ namespace Server_HW4.Models
             this.publisher = string.Empty;
             this.recommendations = string.Empty;
             this.publisher = string.Empty;
+            this.genre = string.Empty;
         }
 
-        public Game(int appID, string name, DateTime releaseDate, double price, string description, string headerImage, string website, bool windows, bool mac, bool linux, int scoreRank, string recommendations, string publisher)
+        public Game(int appID, string name, DateTime releaseDate, double price, string description, string headerImage, string website, bool windows, bool mac, bool linux, int scoreRank, string recommendations, string publisher, string genre)
         {
             this.appID = appID;
             this.name = name;
@@ -81,6 +85,7 @@ namespace Server_HW4.Models
             this.scoreRank = scoreRank;
             this.recommendations = recommendations;
             this.publisher = publisher;
+            this.genre = genre;
         }
 
         public bool insertGame(GameUser gameUser)
@@ -143,5 +148,16 @@ namespace Server_HW4.Models
             return dbs.readGamesData();
         }
 
+        public async Task ClassifyAndSetGenre(string apiKey)
+        {
+            if (string.IsNullOrEmpty(this.Description))
+            {
+                this.Genre = "Unknown";
+                return;
+            }
+
+            var classifier = new GenreClassifier(apiKey);
+            this.Genre = await classifier.ClassifyGenre(this.Description);
+        }
     }
 }

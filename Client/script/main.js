@@ -27,17 +27,46 @@ function renderAllGames(games) {
   games.forEach((game) => {
     //console.log("Rendering game:", game);
     const gameDiv = document.createElement("div");
+
+    const safeDescription = game.Description
+      ? JSON.stringify(game.Description) // This properly escapes the string
+      : '""';
+
     gameDiv.classList.add("card");
 
-    gameDiv.innerHTML += `<img src="${game.HeaderImage}">`;
-    gameDiv.innerHTML += `<h3>${game.Name}</h3>`;
-    gameDiv.innerHTML += `<h4>${game.ReleaseDate}</h4>`;
-    gameDiv.innerHTML += `<h4>${game.Publisher}</h4>`;
-    gameDiv.innerHTML += `<h4>${game.Price}$</h4>`;
-    gameDiv.innerHTML += `<h4>Rank: ${game.ScoreRank}</h4>`;
-    gameDiv.innerHTML += `<button type="button" id="${game.AppID}">Add to MyGAMES</button>`;
+    gameDiv.innerHTML = `
+      <img src="${game.HeaderImage}">
+      <h3>${game.Name}</h3>
+      <h4>${game.ReleaseDate}</h4>
+      <h4>${game.Publisher}</h4>
+      <h4>${game.Price}$</h4>
+      <h4>Rank: ${game.ScoreRank}</h4>
+      <h4>Genre: <span id="genre-${game.AppID}">${
+      game.Genre || "Not classified"
+    }</span></h4>
+      <button type="button" class="add-game" id="${
+        game.AppID
+      }">Add to MyGAMES</button>
+      <button type="button" class="classify-btn" data-gameid="${
+        game.AppID
+      }" data-description="${game.Description || ""}">
+        Classify Genre
+      </button>`;
 
     mainD.appendChild(gameDiv);
+
+    const classifyBtn = gameDiv.querySelector(".classify-btn");
+    classifyBtn.addEventListener("click", () => {
+      classifyGameGenre(game.AppID, game.Description || "");
+    });
+  });
+
+  document.querySelectorAll(".classify-btn").forEach((button) => {
+    button.addEventListener("click", function () {
+      const gameId = this.dataset.gameid;
+      const description = this.dataset.description;
+      classifyGameGenre(gameId, description);
+    });
   });
 }
 
@@ -64,7 +93,7 @@ function convertDateFormat(dateStr) {
 /////////////////////////////////////////////////////////////
 
 mainD.addEventListener("click", (e) => {
-  if (e.target.tagName === "BUTTON") {
+  if (e.target.classList.contains("add-game")) {
     const gameId = e.target.id;
     const gameCard = e.target.closest(".card");
     if (!gameCard) return;
@@ -150,6 +179,11 @@ if (user && user.isLoggedIn) {
                 "Pages/editProfile.html"
               )}" class="home-link">
                 <i class="fas fa-user-edit"></i>Edit Profile
+              </a>
+              <a href="${config.getAssetUrl(
+                "Pages/bonus.html"
+              )}" class="home-link">
+                <i class="fas fa-user-edit"></i>Bonus
               </a>`;
 
   // Check for admin and add admin link
@@ -190,4 +224,40 @@ if (user && user.isLoggedIn) {
 function logout() {
   // Call the utility function
   window.utils.logout();
+}
+
+/////////////////////////
+// Classify Game Genre //
+/////////////////////////
+
+function classifyGameGenre(gameId, description) {
+  // Show loading state
+  $(`#genre-${gameId}`).text("Classifying...");
+
+  const game = {
+    AppID: gameId,
+    Description: description,
+  };
+
+  $.ajax({
+    url: config.getApiUrl("Games/classify-genre"),
+    type: "POST",
+    data: JSON.stringify(game),
+    contentType: "application/json",
+    timeout: 30000, // 30 second timeout
+    success: function (response) {
+      console.log("Genre classified:", response.genre);
+      $(`#genre-${gameId}`).text(response.genre);
+    },
+    error: function (xhr) {
+      console.error("Error classifying genre:", xhr.responseText);
+      $(`#genre-${gameId}`).text("Classification failed");
+      // Show error to user
+      Swal.fire({
+        icon: "error",
+        title: "Classification Failed",
+        text: "The genre classification service is currently unavailable. Please try again later.",
+      });
+    },
+  });
 }

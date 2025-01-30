@@ -222,3 +222,24 @@ body {
   color: white;
   margin-right: 10px;
 }
+
+/* style for the button to genre*/
+
+.card button {
+  margin: 5px; /* Space between buttons */
+  padding: 5px 10px;
+  border-radius: 10px;
+  background-color: #1b2838;
+  color: aliceblue;
+  cursor: pointer;
+}
+
+.card button:hover {
+  background-color: #2a475e;
+}
+
+/* Style for genre display */
+.card span[id^="genre-"] {
+  font-weight: bold;
+  color: #ff7b00;
+}

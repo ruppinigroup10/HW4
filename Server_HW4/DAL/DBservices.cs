@@ -58,6 +58,7 @@ public class DBservices
         Dictionary<string, object> paramDic = new Dictionary<string, object>();
         paramDic.Add("@ID", gameUser.user.id);
         paramDic.Add("@AppID", gameUser.game.AppID);
+        paramDic.Add("@Genre", gameUser.game.Genre ?? "Unknown");
 
         cmd = CreateCommandWithStoredProcedureGeneral("SP_PurchasedGame", con, paramDic);          // create the command
 
@@ -121,6 +122,7 @@ public class DBservices
                 g.Publisher = dataReader["Developers"].ToString() ?? "";
                 g.HeaderImage = dataReader["Header_image"].ToString() ?? "";
                 g.ScoreRank = Convert.ToInt32(dataReader["Score_rank"]);
+                g.Description = dataReader["Description"]?.ToString() ?? "";
                 gameList.Add(g);
             }
             return gameList;
@@ -706,4 +708,7 @@ public class DBservices
         }
 
     }
+
+
+
 }
