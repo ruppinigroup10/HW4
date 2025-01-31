@@ -13,12 +13,12 @@ var app = builder.Build();
 if (true)
 {
     app.UseSwagger();
-    //app.UseSwaggerUI();
-    app.UseSwaggerUI(c =>
-    {
-        c.SwaggerEndpoint("../swagger/v1/swagger.json", "My API V1");
-        c.RoutePrefix = string.Empty; // Access Swagger at the root URL
-    });
+    app.UseSwaggerUI();
+    // app.UseSwaggerUI(c =>
+    // {
+    //     c.SwaggerEndpoint("../swagger/v1/swagger.json", "My API V1");
+    //     c.RoutePrefix = string.Empty; // Access Swagger at the root URL
+    // });
 }
 
 app.UseHttpsRedirection();
