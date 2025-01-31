@@ -10,3 +10,4 @@ SP_FilterMyGamesByRank -> filterMyGamesByRank
 SP_UpdateUserInfo -> UpdateUserInfo
 SP_UpdateActive -> UpdateUserIsActive
 SP_GetUsersData -> readUsersData
+SP_GetGamesData -> readGamesData
