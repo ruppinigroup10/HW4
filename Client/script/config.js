@@ -1,6 +1,10 @@
+//////////////////////////////////////////////////////////////////
+// This file is used to configure the API and static asset URLs //
+//////////////////////////////////////////////////////////////////
+
 const config = {
   // Base settings
-  PORT: "7131", // make sure to change this to your server port
+  PORT: "7131", // Change this to your server port
   apiVersion: "tar1", // For API endpoints
   clientVersion: "tar4", // For static assets/client files
   localIP: "127.0.0.1", // Localhost IP

@@ -1,3 +1,7 @@
+////////////////////////////////
+// Function to make AJAX call //
+////////////////////////////////
+
 function ajaxCall(method, api, data, successCB, errorCB) {
   $.ajax({
     type: method,

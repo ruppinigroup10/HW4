@@ -3,11 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard</title>
+
+    <!-- ------- -->
     <!-- Scripts -->
-    <!-- // config need to be loaded first // -->
+    <!-- ------- -->
+
+    <!-- // config loadeding first // -->
     <script>
       const localIP = "127.0.0.1";
-      const varsion = "tar4"; // need to update
+      const varsion = "tar4"; // update if needed
       const BASE_PATH =
         window.location.host.includes(localIP) ||
         window.location.host.includes("localhost")
@@ -28,6 +33,11 @@
       src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"
     ></script>
     <script src="https://cdn.datatables.net/buttons/2.2.2/js/dataTables.buttons.min.js"></script>
+
+    <!-- ------------- -->
+    <!-- config usage  -->
+    <!-- ------------- -->
+
     <script>
       //CSS
       document.write(
@@ -48,8 +58,11 @@
         )}" defer><\/script>`
       );
     </script>
-    <title>Admin Dashboard</title>
-    <!-- DataTables CSS -->
+
+    <!-- ----------- -->
+    <!-- Data Tables -->
+    <!-- ----------- -->
+
     <link
       rel="stylesheet"
       type="text/css"
@@ -59,11 +72,15 @@
       rel="stylesheet"
       href="https://cdn.datatables.net/buttons/2.2.1/css/buttons.dataTables.min.css"
     />
+
+    <!-- Font Awesome -->
+
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
     />
   </head>
+
   <body>
     <div class="continer">
       <div id="userInfo"></div>
@@ -81,7 +98,6 @@
                 <th>Name</th>
                 <th>Games Bought</th>
                 <th>Amount Spent</th>
-                <!-- <th>Status</th> -->
                 <th>Actions</th>
               </tr>
             </thead>

@@ -3,10 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- // config need to be loaded first // -->
+    <title>Edit Profile - Steam</title>
+
+    <!-- ------- -->
+    <!-- Scripts -->
+    <!-- ------- -->
+
+    <!-- // config loadeding first // -->
     <script>
       const localIP = "127.0.0.1";
-      const varsion = "tar4"; // need to update
+      const varsion = "tar4"; // update if needed
       const BASE_PATH =
         window.location.host.includes(localIP) ||
         window.location.host.includes("localhost")
@@ -15,27 +21,12 @@
 
       document.write(`<script src="${BASE_PATH}/script/config.js"><\/script>`);
     </script>
-    <!-- Load config first -->
-    <!-- <script src="https://proj.ruppin.ac.il/igroup10/test2/tar3/script/config.js"></script>-->
-    <!-- <script src="/script/config.js"></script> -->
-    <title>Edit Profile - Steam</title>
-    <!-- <link
-      rel="stylesheet"
-      href="https://proj.ruppin.ac.il/igroup10/test2/tar3/CSS/CSS_editProfile.css"
-    /> -->
-    <!-- <link rel="stylesheet" href="/CSS/CSS_editProfile.css" /> -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <!-- <script
-      src="https://proj.ruppin.ac.il/igroup10/test2/tar3/script/ajaxCall.js"
-      defer
-    ></script>
-    <script
-      src="https://proj.ruppin.ac.il/igroup10/test2/tar3/script/editProfile.js"
-      defer
-    ></script> -->
-    <!-- <script src="/script/ajaxCall.js" defer></script>
-    <script src="/script/editProfile.js" defer></script> -->
+
+    <!-- ------------- -->
+    <!-- config usage  -->
+    <!-- ------------- -->
 
     <script>
       //CSS
@@ -45,7 +36,6 @@
         )}">`
       );
       //SCRIPTS
-
       document.write(
         `<script src="${config.getAssetUrl(
           "script/ajaxCall.js"
@@ -57,6 +47,7 @@
         )}" defer><\/script>`
       );
     </script>
+    <!-- Font Awesome -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
@@ -64,10 +55,7 @@
   </head>
   <body>
     <div style="display: flex; justify-content: flex-start; padding: 10px">
-      <a class="home-link">
-        <!-- <a href="/Pages/index.html" class="home-link"> -->
-        <i class="fas fa-home"></i>Back to Home
-      </a>
+      <a class="home-link"> <i class="fas fa-home"></i>Back to Home </a>
     </div>
 
     <h1>Edit Profile</h1>

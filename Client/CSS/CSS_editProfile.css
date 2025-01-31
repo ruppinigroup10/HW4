@@ -1,5 +1,12 @@
+/* ------------------ */
 /* Import base styles */
+/* ------------------ */
+
 @import url("https://proj.ruppin.ac.il/igroup10/test2/tar3/CSS/CSS_login.css");
+
+/* ---------------- */
+/* Edit profile CSS */
+/* ---------------- */
 
 body {
   background: linear-gradient(135deg, #1b2838 0%, #2a475e 100%);

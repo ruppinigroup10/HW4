@@ -1,5 +1,7 @@
 $(document).ready(function () {
-  // Check if admin
+  ////////////////////
+  // Check if admin //
+  ////////////////////
   const user = JSON.parse(localStorage.getItem("user"));
   if (!user || !user.isAdmin) {
     window.location.replace("/Pages/login.html");
@@ -83,12 +85,11 @@ function initializeTables() {
   });
 }
 
-function toggleUserStatus(userId, newStatus) {
-  //   const data = {
-  //     id: userId,
-  //     isActive: newStatus,
-  //   };
+////////////////////////
+// Toggle user status //
+////////////////////////
 
+function toggleUserStatus(userId, newStatus) {
   console.log(`Debug - userId: ${userId}, newStatus: ${newStatus}`);
 
   const api = config.getApiUrl(
@@ -100,8 +101,6 @@ function toggleUserStatus(userId, newStatus) {
   $.ajax({
     url: api,
     type: "PUT",
-    //data: JSON.stringify(data),
-
     contentType: "application/json",
     success: function (response) {
       console.log("API URL:", api);
@@ -122,6 +121,10 @@ function toggleUserStatus(userId, newStatus) {
     },
   });
 }
+
+///////////////
+// User info //
+///////////////
 
 $(document).ready(function () {
   const user = JSON.parse(localStorage.getItem("user"));

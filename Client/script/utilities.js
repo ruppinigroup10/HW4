@@ -1,3 +1,7 @@
+/////////////////////////////////////////////////////
+// Utilities functions - Check User Access, logout //
+/////////////////////////////////////////////////////
+
 const utils = {
   checkUserAccess() {
     const user = JSON.parse(localStorage.getItem("user"));
@@ -37,10 +41,6 @@ const utils = {
     }).then(() => {
       window.location.replace(config.getAssetUrl("Pages/login.html"));
     });
-
-    //backups
-    //window.location.replace("https://proj.ruppin.ac.il/igroup10/test2/tar3/Pages/login.html")});
-    //window.location.replace("/Pages/login.html")});
   },
 };
 

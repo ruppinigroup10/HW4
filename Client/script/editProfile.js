@@ -1,12 +1,10 @@
 $(document).ready(() => {
-  // Check if user is logged in
+  ////////////////////////////////
+  // Check if user is logged in //
+  ////////////////////////////////
   const user = JSON.parse(localStorage.getItem("user"));
   if (!user) {
     window.location.replace(config.getAssetUrl("Pages/login.html"));
-    // window.location.replace(
-    //   "https://proj.ruppin.ac.il/igroup10/test2/tar3/Pages/login.html"
-    // );
-    // window.location.replace("/Pages/login.html");
     return;
   }
   //homelink
@@ -24,7 +22,9 @@ $(document).ready(() => {
   $("#password").attr("placeholder", "Enter password").val("");
   $("#confirmPassword").attr("placeholder", "Confirm password").val("");
 
-  // Handle password visibility toggle
+  ///////////////////////////////////////
+  // Handle password visibility toggle //
+  ///////////////////////////////////////
   $(".password-toggle").click(function (e) {
     e.preventDefault();
     const passwordInput = $(this).siblings("input");
@@ -39,14 +39,18 @@ $(document).ready(() => {
     }
   });
 
-  // Handle password field focus
+  /////////////////////////////////
+  // Handle password field focus //
+  /////////////////////////////////
   $("#password, #confirmPassword").focus(function () {
     if ($(this).val() === "") {
       $(this).attr("type", "password");
     }
   });
 
-  // Handle password field blur
+  ////////////////////////////////
+  // Handle password field blur //
+  ////////////////////////////////
   $("#password, #confirmPassword").blur(function () {
     if ($(this).val() === "") {
       $(this).attr("type", "password");
@@ -57,7 +61,9 @@ $(document).ready(() => {
     }
   });
 
-  // Track password changes
+  ////////////////////////////
+  // Track password changes //
+  ////////////////////////////
   $("#password, #confirmPassword").on("input", function () {
     const newValue = $(this).val();
     isPasswordChanged = newValue !== "" && newValue !== originalPassword;
@@ -72,7 +78,9 @@ $(document).ready(() => {
     const password = $("#password").val();
     const confirmPassword = $("#confirmPassword").val();
 
-    // Validation
+    ////////////////
+    // Validation //
+    ////////////////
     if (!name || !email) {
       Swal.fire({
         icon: "error",
@@ -82,7 +90,9 @@ $(document).ready(() => {
       return;
     }
 
-    // Email validation
+    //////////////////////
+    // Email validation //
+    //////////////////////
     const emailPattern = /^((?!\.)[\w\-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$/;
     if (!emailPattern.test(email)) {
       Swal.fire({
@@ -93,7 +103,10 @@ $(document).ready(() => {
       return;
     }
 
-    // Password validation if changed
+    ////////////////////////////////////
+    // Password validation if changed //
+    ////////////////////////////////////
+
     if (isPasswordChanged) {
       const passwordPattern = /^[A-Z0-9]+$/;
       if (!passwordPattern.test(password)) {
@@ -122,9 +135,6 @@ $(document).ready(() => {
       password: isPasswordChanged ? password : originalPassword,
     };
 
-    // const api =
-    //   "https://proj.ruppin.ac.il/igroup10/test2/tar1/api/Users/UpdateProfile";
-    // const api =`https://localhost:${PORT_BU}/api/Users/UpdateProfile"`;
     const api = config.getApiUrl("Users/UpdateProfile");
     ajaxCall(
       "PUT",
@@ -155,10 +165,6 @@ function updateSuccessCB(result) {
   }).then(() => {
     window.location.replace(config.getAssetUrl("Pages/index.html"));
   });
-  //   window.location.href =
-  //     "https://proj.ruppin.ac.il/igroup10/test2/tar3/Pages/index.html";
-  // });
-  //   window.location.href ="/Pages/index.html";});
 }
 
 function updateErrorCB(error) {

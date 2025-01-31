@@ -43,8 +43,6 @@ $("#login").submit(function () {
     password: $("#log_password").val(),
   };
 
-  //const api = "https://proj.ruppin.ac.il/igroup10/test2/tar1/api/Users/Login";
-  //const api = `https://localhost:${PORT_BU}/api/Users/Login`;
   const api = config.getApiUrl("Users/Login");
   console.log("Attempting login with:", user);
   console.log("api:", api);
@@ -56,7 +54,9 @@ $("#login").submit(function () {
 function lscb(result) {
   console.log("Login success:", result);
 
-  // Check isActive status
+  ///////////////////////////
+  // Check isActive status //
+  ///////////////////////////
   if (!result.user.isActive) {
     Swal.fire({
       title: "Error!",
@@ -67,7 +67,9 @@ function lscb(result) {
     return;
   }
 
-  // Store sensitive info separately
+  /////////////////////////////////////
+  // Store sensitive info separately //
+  /////////////////////////////////////
   localStorage.setItem(
     "userCredentials",
     JSON.stringify({
@@ -99,12 +101,6 @@ function lscb(result) {
     showConfirmButton: false,
   }).then(() => {
     window.location.replace(config.getAssetUrl("Pages/index.html"));
-    // window.location.replace(
-    //   "https://proj.ruppin.ac.il/igroup10/test2/tar3/Pages/index.html"
-    // );
-    // window.location.replace(
-    //   "/Pages/index.html"
-    // );
   });
 }
 
@@ -131,10 +127,6 @@ $("#Register").submit(function () {
     password: $("#reg_password").val(),
   };
 
-  // const api =
-  //   "https://proj.ruppin.ac.il/igroup10/test2/tar1/api/Users/Register";
-  // const api =
-  //   `https://localhost:${PORT_BU}/api/Users/Register`;
   const api = config.getApiUrl("Users/Register");
   console.log("Sending registration data:", user);
 
@@ -144,7 +136,10 @@ $("#Register").submit(function () {
 
 function rscb(result) {
   console.log("Register success:", result);
-  // Store sensitive info separately
+
+  /////////////////////////////////////
+  // Store sensitive info separately //
+  /////////////////////////////////////
   localStorage.setItem(
     "userCredentials",
     JSON.stringify({
@@ -172,12 +167,6 @@ function rscb(result) {
     showConfirmButton: false,
   }).then(() => {
     window.location.replace(config.getAssetUrl("Pages/index.html"));
-    // window.location.replace(
-    //   "https://proj.ruppin.ac.il/igroup10/test2/tar3/Pages/index.html"
-    // );
-    // window.location.replace(
-    //   "/Pages/index.html"
-    // );
   });
 }
 

@@ -6,10 +6,6 @@ let mainD = document.getElementById("main");
 
 function getAllGames() {
   console.log("in getAllGames");
-  // const api =
-  //   "https://proj.ruppin.ac.il/igroup10/test2/tar1/api/Games/GetAllGames";
-  // const api =
-  //   `https://localhost:${Port_BU}/api/Games/GetAllGames`;
   const api = config.getApiUrl("Games/GetAllGames");
   console.log("api:", api);
   ajaxCall("GET", api, "", renderAllGames, errorCB);
@@ -29,7 +25,7 @@ function renderAllGames(games) {
     const gameDiv = document.createElement("div");
 
     const safeDescription = game.Description
-      ? JSON.stringify(game.Description) // This properly escapes the string
+      ? JSON.stringify(game.Description)
       : '""';
 
     gameDiv.classList.add("card");
@@ -122,8 +118,6 @@ mainD.addEventListener("click", (e) => {
 
     console.log("Sending data:", { game: GameToPost, user: UserToPost });
 
-    //const api = "https://proj.ruppin.ac.il/igroup10/test2/tar1/api/Games";
-    //const api = `https://localhost:${PORT_BU}/api/Games`;
     const api = config.getApiUrl("Games");
     const GameUser = { game: GameToPost, user: UserToPost };
 
@@ -162,11 +156,6 @@ $(document).ready(() => {
 // Check if user is logged in and display info//
 ////////////////////////////////////////////////
 
-//backups
-//<a href="https://proj.ruppin.ac.il/igroup10/test2/tar3/Pages/MyGames.html" class="home-link">
-// <a href="/Pages/MyGames.html" class="home-link">
-//<a href="https://proj.ruppin.ac.il/igroup10/test2/tar3/Pages/editProfile.html" class="home-link">
-//<a href="/Pages/editProfile.html" class="home-link"></a>
 const user = JSON.parse(localStorage.getItem("user"));
 if (user && user.isLoggedIn) {
   // Base links string
@@ -186,7 +175,9 @@ if (user && user.isLoggedIn) {
                 <i class="fas fa-user-edit"></i>Bonus
               </a>`;
 
-  // Check for admin and add admin link
+  ////////////////////////////////////////
+  // Check for admin and add admin link //
+  ////////////////////////////////////////
   if (user.email === "admin@admin.com") {
     links += `<a href="${config.getAssetUrl(
       "Pages/adminPage.html"
@@ -210,10 +201,6 @@ if (user && user.isLoggedIn) {
           </div>
         `);
 } else {
-  //backups
-  //<a href="https://proj.ruppin.ac.il/igroup10/test2/tar3/Pages/login.html" class="home-link">
-  //<a href="/Pages/login.html" class="home-link">
-  // Show login link for non-logged-in users
   $("#userInfo").html(`
           <a href="${config.getAssetUrl("Pages/login.html")}" class="home-link">
             <i class="fas fa-sign-in-alt"></i>Login

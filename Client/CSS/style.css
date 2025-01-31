@@ -1,3 +1,7 @@
+/* -------------------------- */
+/* Main style for the website */
+/* -------------------------- */
+
 html,
 body,
 div,
@@ -223,7 +227,9 @@ body {
   margin-right: 10px;
 }
 
-/* style for the button to genre*/
+/* ------------------------------------ */
+/* style for the button to genre - bonus*/
+/* ------------------------------------ */
 
 .card button {
   margin: 5px; /* Space between buttons */

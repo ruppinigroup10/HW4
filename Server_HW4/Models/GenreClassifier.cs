@@ -5,7 +5,7 @@ namespace Server_HW4.Models
 {
     public class GenreClassifier
     {
-        private readonly string _apiKey; // Your HuggingFace API key
+        private readonly string _apiKey; // HuggingFace API key
         private readonly HttpClient _client;
         private const string API_URL = "https://api-inference.huggingface.co/models/facebook/bart-large-mnli";
 
@@ -21,7 +21,7 @@ namespace Server_HW4.Models
         {
             try
             {
-                // Define possible game genres
+                // Possible game genres
                 var genres = new[] { "Action", "Adventure", "RPG", "Strategy", "Sports", "Simulation" };
 
                 // Format request for zero-shot classification
